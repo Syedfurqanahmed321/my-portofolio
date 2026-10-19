@@ -1,0 +1,2272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syed Furqan Ahmed | Linux & DevOps Intern | Portfolio</title>
+  <meta name="description" content="Personal portfolio of Syed Furqan Ahmed - Computer Science Student & Linux & DevOps Intern specializing in Linux administration, Docker, Kubernetes, AWS, and Ansible.">
+  <meta name="author" content="Syed Furqan Ahmed">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    /* Theme anti-flicker initializer */
+    (function() {
+      try {
+        const saved = localStorage.getItem('furqan_portfolio_theme');
+        if (saved === 'dark' || saved === 'light') {
+          document.documentElement.setAttribute('data-theme', saved);
+        } else {
+          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+
+  <style>
+    /* ==========================================================================
+       CSS Variables: Light Theme (Default) & Dark Modern Theme
+       ========================================================================== */
+    :root, [data-theme="light"] {
+      /* Backgrounds: Fresh, bright, soft */
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-alt: #f1f5f9;
+      --bg-subtle-blue: #f0f7ff;
+      --bg-subtle-violet: #f5f3ff;
+      --bg-subtle-mint: #f0fdf4;
+      --bg-tag: #eef2ff;
+      --bg-tag-border: #e0e7ff;
+      --bg-floating-card: rgba(255, 255, 255, 0.95);
+      --border-portrait: rgba(255, 255, 255, 0.9);
+      --bg-nav: rgba(255, 255, 255, 0.88);
+
+      /* Primary Accents & Gradients */
+      --primary: #2563eb;         /* Crisp Electric Blue */
+      --primary-hover: #1d4ed8;
+      --primary-light: #dbeafe;
+      --accent-violet: #7c3aed;   /* Fresh Violet */
+      --accent-cyan: #0891b2;     /* Subtle Cyan */
+      --accent-emerald: #059669;  /* Mint / Emerald */
+      --accent-amber: #d97706;    /* Subtle Amber */
+
+      /* Text Colors: Dark Navy for optimal readability */
+      --text-heading: #0f172a;    /* Deep Navy Slate */
+      --text-body: #334155;       /* Slate 700 */
+      --text-muted: #64748b;      /* Slate 500 */
+      --text-dim: #94a3b8;        /* Slate 400 */
+
+      /* Borders & Shadows: Soft, premium, elevated */
+      --border-light: #e2e8f0;
+      --border-focus: #93c5fd;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 14px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+      --shadow-lg: 0 12px 28px -6px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+      --shadow-hover: 0 20px 35px -8px rgba(37, 99, 235, 0.12), 0 6px 14px -3px rgba(15, 23, 42, 0.05);
+
+      /* Gradients */
+      --gradient-brand: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      --gradient-hero-bg: radial-gradient(circle at 85% 15%, rgba(219, 234, 254, 0.7) 0%, rgba(245, 243, 255, 0.5) 40%, rgba(248, 250, 252, 0) 70%);
+      --gradient-card: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+      --gradient-project-header: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%);
+      --gradient-contact: linear-gradient(135deg, #ffffff 0%, #f0f7ff 50%, #f5f3ff 100%);
+      --border-contact: #dbeafe;
+    }
+
+    [data-theme="dark"] {
+      /* Backgrounds: Modern Midnight Developer Theme */
+      --bg-body: #0b0f19;
+      --bg-surface: #111827;
+      --bg-surface-alt: #0c1220;
+      --bg-subtle-blue: #172554;
+      --bg-subtle-violet: #2e1065;
+      --bg-subtle-mint: #064e3b;
+      --bg-tag: #1e293b;
+      --bg-tag-border: #334155;
+      --bg-floating-card: rgba(17, 24, 39, 0.94);
+      --border-portrait: rgba(59, 130, 246, 0.4);
+      --bg-nav: rgba(11, 15, 25, 0.9);
+
+      /* Primary Accents & Gradients */
+      --primary: #3b82f6;         /* Bright Electric Blue */
+      --primary-hover: #60a5fa;
+      --primary-light: #1e3a8a;
+      --accent-violet: #a855f7;   /* Vibrant Violet */
+      --accent-cyan: #06b6d4;     /* Crisp Cyan */
+      --accent-emerald: #10b981;  /* Emerald */
+      --accent-amber: #f59e0b;    /* Warm Amber */
+
+      /* Text Colors */
+      --text-heading: #f8fafc;    /* Crisp White / Slate 50 */
+      --text-body: #cbd5e1;       /* Slate 300 */
+      --text-muted: #94a3b8;      /* Slate 400 */
+      --text-dim: #64748b;        /* Slate 500 */
+
+      /* Borders & Shadows */
+      --border-light: rgba(255, 255, 255, 0.08);
+      --border-focus: #3b82f6;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 4px 14px -2px rgba(0, 0, 0, 0.5), 0 2px 6px -1px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 12px 28px -6px rgba(0, 0, 0, 0.6), 0 4px 10px -2px rgba(0, 0, 0, 0.4);
+      --shadow-hover: 0 20px 35px -8px rgba(59, 130, 246, 0.28), 0 6px 14px -3px rgba(0, 0, 0, 0.5);
+
+      /* Gradients */
+      --gradient-brand: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%);
+      --gradient-hero-bg: radial-gradient(circle at 85% 15%, rgba(59, 130, 246, 0.14) 0%, rgba(168, 85, 247, 0.1) 40%, rgba(11, 15, 25, 0) 70%);
+      --gradient-card: linear-gradient(180deg, #111827 0%, #0d1424 100%);
+      --gradient-project-header: linear-gradient(135deg, #131d33 0%, #1a1638 100%);
+      --gradient-contact: linear-gradient(135deg, #111827 0%, #131d33 50%, #181433 100%);
+      --border-contact: #1e293b;
+    }
+
+    /* Reset & Typography */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-body);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ==========================================================================
+       Navigation Bar
+       ========================================================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: var(--bg-nav);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-heading);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.4px;
+    }
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--gradient-brand);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: width 0.25s ease;
+    }
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
+    }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Theme Toggle Switcher Button */
+    .theme-toggle {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      color: var(--text-heading);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .theme-toggle:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: var(--shadow-md);
+    }
+    .theme-toggle:active {
+      transform: scale(0.94);
+    }
+    .theme-toggle-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+    :root[data-theme="light"] .icon-sun,
+    :root:not([data-theme="dark"]) .icon-sun,
+    html[data-theme="light"] .icon-sun {
+      display: none !important;
+    }
+    :root[data-theme="light"] .icon-moon,
+    :root:not([data-theme="dark"]) .icon-moon,
+    html[data-theme="light"] .icon-moon {
+      display: flex !important;
+    }
+    [data-theme="dark"] .icon-moon,
+    html[data-theme="dark"] .icon-moon {
+      display: none !important;
+    }
+    [data-theme="dark"] .icon-sun,
+    html[data-theme="dark"] .icon-sun {
+      display: flex !important;
+      color: #f59e0b;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 8px;
+      cursor: pointer;
+      color: var(--text-heading);
+    }
+
+    /* ==========================================================================
+       Buttons & Interactive Elements
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 0.94rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-primary {
+      background: var(--gradient-brand);
+      color: #ffffff !important;
+      border: none;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.38);
+    }
+    .btn-secondary {
+      background: var(--bg-surface);
+      color: var(--text-heading) !important;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary) !important;
+      background: var(--bg-subtle-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ==========================================================================
+       Hero Section
+       ========================================================================== */
+    .hero-section {
+      padding: 155px 0 90px 0;
+      background: var(--gradient-hero-bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      border: 1px solid #bbf7d0;
+      color: var(--accent-emerald);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 22px;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.6);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.6); }
+      70% { box-shadow: 0 0 0 8px rgba(5, 150, 105, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
+    }
+    .hero-greeting {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .hero-name {
+      font-size: 3.3rem;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      color: var(--text-heading);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-name span {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-role-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.28rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 18px;
+    }
+    .typing-text {
+      color: var(--accent-violet);
+      border-right: 2px solid var(--accent-violet);
+      padding-right: 4px;
+      font-family: 'Fira Code', monospace;
+      animation: blink 0.75s step-end infinite;
+    }
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--accent-violet); }
+    }
+    .hero-bio {
+      font-size: 1.08rem;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 34px;
+      max-width: 560px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 9px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .social-btn:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: var(--bg-subtle-blue);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Visual Right Side */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .portrait-aura {
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.14) 0%, rgba(37, 99, 235, 0.12) 50%, transparent 75%);
+      z-index: 1;
+      filter: blur(20px);
+      animation: float-gentle 6s ease-in-out infinite alternate;
+    }
+    .portrait-frame {
+      position: relative;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      padding: 8px;
+      box-shadow: 0 20px 45px -10px rgba(37, 99, 235, 0.2), 0 10px 20px -5px rgba(124, 58, 237, 0.12);
+      border: 3px solid var(--border-portrait);
+      z-index: 2;
+    }
+    .portrait-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Floating Technology Badges */
+    .floating-card {
+      position: absolute;
+      background: var(--bg-floating-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-lg);
+      z-index: 3;
+      transition: transform 0.3s ease;
+    }
+    .floating-card:hover {
+      transform: scale(1.05) translateY(-3px);
+    }
+    .card-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .card-info h5 {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.2;
+    }
+    .card-info span {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+    }
+
+    .fc-k8s {
+      top: 10px;
+      right: -20px;
+      animation: float-badge-1 5s ease-in-out infinite;
+    }
+    .fc-linux {
+      bottom: 25px;
+      left: -25px;
+      animation: float-badge-2 6s ease-in-out infinite;
+    }
+    .fc-aws {
+      bottom: -15px;
+      right: 20px;
+      animation: float-badge-3 5.5s ease-in-out infinite;
+    }
+    .fc-docker {
+      top: 30px;
+      left: -20px;
+      animation: float-badge-4 6.5s ease-in-out infinite;
+    }
+
+    @keyframes float-badge-1 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes float-badge-2 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+    @keyframes float-badge-3 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes float-badge-4 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* ==========================================================================
+       Highlights / Metric Strip
+       ========================================================================== */
+    .metric-strip {
+      margin-top: -30px;
+      position: relative;
+      z-index: 10;
+    }
+    .metric-grid {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      padding: 32px 36px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .metric-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .metric-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .metric-details h4 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .metric-details p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       Section Foundations
+       ========================================================================== */
+    .section {
+      padding: 95px 0;
+      position: relative;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 55px auto;
+    }
+    .section-tag {
+      display: inline-block;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      background: var(--bg-subtle-blue);
+      border: 1px solid var(--primary-light);
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 2.35rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: var(--text-heading);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ==========================================================================
+       About Section
+       ========================================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+    .about-story-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .story-para {
+      font-size: 1.05rem;
+      color: var(--text-body);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .story-para strong {
+      color: var(--text-heading);
+    }
+    .story-para:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-cards-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .fact-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all 0.25s ease;
+    }
+    .fact-card:hover {
+      border-color: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .fact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .fact-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 3px;
+    }
+    .fact-content p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       Technical Skills Section
+       ========================================================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+    .skill-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-hover);
+    }
+    .skill-card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .skill-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .skill-card-top h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-heading);
+    }
+    .skill-card-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .skill-tag-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: auto;
+    }
+    .skill-tag {
+      background: var(--bg-tag);
+      color: var(--primary);
+      border: 1px solid var(--bg-tag-border);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 7px;
+      transition: all 0.2s ease;
+    }
+    .skill-tag:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* ==========================================================================
+       Projects Section (Most Important)
+       ========================================================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .project-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 22px;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: #bfdbfe;
+    }
+    .project-illustration {
+      height: 190px;
+      background: var(--gradient-project-header);
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+    }
+    .project-content {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .project-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .project-lab-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0fdf4;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .project-tech-mono {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .project-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: -0.4px;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .project-bullets {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .project-bullets li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.88rem;
+      color: var(--text-body);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .project-bullets li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+    .project-bullets li strong {
+      color: var(--text-heading);
+    }
+    .project-tags-footer {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .tech-pill {
+      font-size: 0.76rem;
+      font-family: 'Fira Code', monospace;
+      font-weight: 600;
+      background: var(--bg-tag);
+      color: var(--primary);
+      border: 1px solid var(--bg-tag-border);
+      padding: 4px 9px;
+      border-radius: 6px;
+    }
+
+    /* Abstract SVG Technical Illustrations inside Project Headers */
+    .diag-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ==========================================================================
+       Learning & Certifications Section
+       ========================================================================== */
+    .learning-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+    }
+    .card-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 34px;
+      box-shadow: var(--shadow-md);
+    }
+    .block-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .block-header-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .block-header h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-heading);
+    }
+
+    /* Training Items */
+    .train-item {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .train-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .train-item:first-child {
+      padding-top: 0;
+    }
+    .train-info h4 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 3px;
+    }
+    .train-info p {
+      font-size: 0.88rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .train-info span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .status-badge-train {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .badge-done {
+      background: #f0fdf4;
+      color: #16a34a;
+      border: 1px solid #bbf7d0;
+    }
+    .badge-progress {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* Education Timeline */
+    .timeline-wrap {
+      position: relative;
+      padding-left: 24px;
+    }
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--border-light);
+    }
+    .timeline-entry {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .timeline-entry:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-entry-dot {
+      position: absolute;
+      left: -24px;
+      top: 5px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 3px solid var(--bg-surface);
+      box-shadow: 0 0 0 2px var(--primary-light);
+    }
+    .timeline-entry h4 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+    .timeline-entry p {
+      font-size: 0.88rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .timeline-entry span {
+      font-size: 0.8rem;
+      font-family: 'Fira Code', monospace;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       Contact Section
+       ========================================================================== */
+    .contact-card-main {
+      background: var(--gradient-contact);
+      border: 1px solid var(--border-contact);
+      border-radius: 28px;
+      box-shadow: var(--shadow-lg);
+      padding: 60px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-heading {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      letter-spacing: -0.6px;
+      margin-bottom: 12px;
+    }
+    .contact-intro {
+      font-size: 1.08rem;
+      color: var(--text-body);
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      line-height: 1.7;
+    }
+    .contact-chips-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .contact-chip-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      padding: 13px 22px;
+      border-radius: 14px;
+      color: var(--text-heading);
+      text-decoration: none;
+      font-size: 0.94rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+    .contact-chip-item:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .contact-chip-icon {
+      width: 22px;
+      height: 22px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .download-banner {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 18px;
+      padding: 26px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 760px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-sm);
+      text-align: left;
+    }
+    .download-banner-text h4 {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 3px;
+    }
+    .download-banner-text p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       Footer
+       ========================================================================== */
+    footer {
+      border-top: 1px solid var(--border-light);
+      padding: 40px 0;
+      background: var(--bg-surface);
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    /* ==========================================================================
+       Mobile & Tablet Responsiveness
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        text-align: center;
+      }
+      .hero-greeting, .hero-role-wrapper, .hero-actions, .social-links {
+        justify-content: center;
+      }
+      .hero-bio {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-visual {
+        order: -1;
+      }
+      .metric-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .skills-grid, .projects-grid, .about-grid, .learning-grid {
+        grid-template-columns: 1fr;
+      }
+      .download-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .download-banner-text {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta .btn {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-surface);
+        padding: 24px;
+        border-bottom: 1px solid var(--border-light);
+        box-shadow: var(--shadow-lg);
+        gap: 18px;
+      }
+      .hero-name {
+        font-size: 2.5rem;
+      }
+      .portrait-frame {
+        width: 270px;
+        height: 270px;
+      }
+      .floating-card {
+        padding: 6px 12px;
+      }
+      .card-info h5 {
+        font-size: 0.78rem;
+      }
+      .card-info span {
+        display: none;
+      }
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-card-main {
+        padding: 40px 24px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+
+    /* ==========================================================================
+       Dark Theme Specific Adjustments & Overrides
+       ========================================================================== */
+    .section-alt {
+      background: var(--bg-surface-alt);
+    }
+
+    [data-theme="dark"] .project-lab-badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+    [data-theme="dark"] .badge-done {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+    [data-theme="dark"] .badge-progress {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border-color: rgba(59, 130, 246, 0.35);
+    }
+    [data-theme="dark"] .badge-pill {
+      background: var(--bg-surface);
+      border-color: rgba(16, 185, 129, 0.35);
+      color: #34d399;
+    }
+    [data-theme="dark"] .pulse-dot {
+      background: #34d399;
+      box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+    }
+
+    /* SVG Technical Illustration Dark Theme Overrides */
+    [data-theme="dark"] .diag-container svg rect[fill="#FFFFFF"] {
+      fill: #1e293b;
+      stroke: #334155;
+    }
+    [data-theme="dark"] .diag-container svg rect[fill="#EFF6FF"] {
+      fill: #172554;
+      stroke: #1e40af;
+    }
+    [data-theme="dark"] .diag-container svg rect[fill="#F5F3FF"] {
+      fill: #2e1065;
+      stroke: #6d28d9;
+    }
+    [data-theme="dark"] .diag-container svg rect[fill="#F0FDF4"] {
+      fill: #064e3b;
+      stroke: #059669;
+    }
+    [data-theme="dark"] .diag-container svg rect[fill="#FEF3C7"] {
+      fill: #2d2315;
+      stroke: #78350f;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#1E40AF"] {
+      fill: #93c5fd;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#6D28D9"] {
+      fill: #c4b5fd;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#065F46"] {
+      fill: #6ee7b7;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#1F2937"] {
+      fill: #f1f5f9;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#64748B"] {
+      fill: #94a3b8;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#92400E"] {
+      fill: #fde68a;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#166534"] {
+      fill: #86efac;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#2563EB"] {
+      fill: #93c5fd;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#7C3AED"] {
+      fill: #c4b5fd;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#059669"] {
+      fill: #6ee7b7;
+    }
+    [data-theme="dark"] .diag-container svg text[fill="#D97706"] {
+      fill: #fcd34d;
+    }
+
+    /* Dark Mode Pastel Badges & Icon Containers */
+    [data-theme="dark"] .card-icon,
+    [data-theme="dark"] .metric-icon-wrap,
+    [data-theme="dark"] .fact-icon,
+    [data-theme="dark"] .skill-icon-box,
+    [data-theme="dark"] .block-header-icon {
+      background: #1e293b !important;
+      color: var(--primary) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       Navigation Bar
+       ======================================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <span class="brand-icon">&gt;_</span>
+        <span>Syed Furqan Ahmed</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#learning">Learning</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+          <span class="theme-toggle-icon icon-sun">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </span>
+          <span class="theme-toggle-icon icon-moon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </span>
+        </button>
+        <a href="Syed_Furqan_Ahmed_CV.pdf" download="Syed_Furqan_Ahmed_CV.pdf" class="btn btn-primary" style="padding: 10px 18px; font-size: 0.88rem;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Download CV</span>
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       Hero Section
+       ======================================================================== -->
+  <header id="home" class="hero-section">
+    <div class="container hero-grid">
+      <!-- Left Hero Column -->
+      <div class="hero-text-col">
+        <div class="badge-pill">
+          <span class="pulse-dot"></span>
+          <span>Open to Linux &amp; DevOps Internships</span>
+        </div>
+
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-name">Syed Furqan <br><span>Ahmed</span></h1>
+
+        <div class="hero-role-wrapper">
+          <span>Aspiring</span>
+          <span class="typing-text" id="typewriterText">Linux Administration</span>
+        </div>
+
+        <p class="hero-bio">
+          Computer Science undergraduate (5th semester) at <strong>Khushal Khan Khattak University Karak</strong> with a passion for building reliable IT infrastructure. Practiced hands-on implementation in local lab environments configuring <strong>Linux servers</strong>, containerizing workloads with <strong>Docker</strong>, orchestrating with <strong>Kubernetes (Minikube)</strong>, and automating tasks with <strong>Ansible</strong>.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            <span>Explore My Work</span>
+          </a>
+          <a href="Syed_Furqan_Ahmed_CV.pdf" download="Syed_Furqan_Ahmed_CV.pdf" class="btn btn-secondary">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download CV (PDF)</span>
+          </a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://linkedin.com/in/syed-furqan-0073b5334" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="mailto:furqanalishah2256@gmail.com" class="social-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span>furqanalishah2256@gmail.com</span>
+          </a>
+          <span class="social-btn" style="cursor: default;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Karak, KPK, Pakistan</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Right Hero Column (Portrait & Animated Badges) -->
+      <div class="hero-visual">
+        <div class="portrait-aura"></div>
+
+        <div class="portrait-frame">
+          <img src="assets/portrait_clean.png" alt="Syed Furqan Ahmed - DevOps Developer Tech Portrait" class="portrait-img">
+        </div>
+
+        <!-- Floating Card 1: Kubernetes -->
+        <div class="floating-card fc-k8s">
+          <div class="card-icon" style="background: #e0f2fe; color: #0284c7;">☸️</div>
+          <div class="card-info">
+            <h5>Kubernetes</h5>
+            <span>Minikube &bull; Pods</span>
+          </div>
+        </div>
+
+        <!-- Floating Card 2: Linux -->
+        <div class="floating-card fc-linux">
+          <div class="card-icon" style="background: #fef3c7; color: #d97706;">🐧</div>
+          <div class="card-info">
+            <h5>Linux Admin</h5>
+            <span>RHEL &bull; Systemd</span>
+          </div>
+        </div>
+
+        <!-- Floating Card 3: AWS -->
+        <div class="floating-card fc-aws">
+          <div class="card-icon" style="background: #ffedd5; color: #ea580c;">☁️</div>
+          <div class="card-info">
+            <h5>AWS Cloud</h5>
+            <span>EC2 &bull; S3 &bull; IAM</span>
+          </div>
+        </div>
+
+        <!-- Floating Card 4: Docker & Ansible -->
+        <div class="floating-card fc-docker">
+          <div class="card-icon" style="background: #ede9fe; color: #7c3aed;">🐳</div>
+          <div class="card-info">
+            <h5>Containers &amp; IaC</h5>
+            <span>Docker &bull; Ansible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Key Metric Highlights Strip
+       ======================================================================== -->
+  <div class="container metric-strip">
+    <div class="metric-grid">
+      <div class="metric-item">
+        <div class="metric-icon-wrap" style="background: #eff6ff; color: #2563eb;">🎓</div>
+        <div class="metric-details">
+          <h4>5th Sem</h4>
+          <p>BS Computer Science (KKKUK)</p>
+        </div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-icon-wrap" style="background: #f5f3ff; color: #7c3aed;">📜</div>
+        <div class="metric-details">
+          <h4>4 Tracks</h4>
+          <p>CCNA, RHCSA, AWS &amp; DevOps</p>
+        </div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-icon-wrap" style="background: #ecfeff; color: #0891b2;">💻</div>
+        <div class="metric-details">
+          <h4>100% Lab</h4>
+          <p>Practical Linux &amp; DevOps Focus</p>
+        </div>
+      </div>
+
+      <div class="metric-item">
+        <div class="metric-icon-wrap" style="background: #f0fdf4; color: #16a34a;">🚀</div>
+        <div class="metric-details">
+          <h4>Intern Ready</h4>
+          <p>Open for Technical Roles</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       About Section
+       ======================================================================== -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 01. ABOUT ME</span>
+        <h2 class="section-title">Bridging Systems, Networks &amp; Cloud</h2>
+        <p class="section-desc">A student driven by curiosity to break, build, and automate IT infrastructure from the ground up.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-story-card">
+          <div>
+            <p class="story-para">
+              I am a Computer Science undergraduate at <strong>Khushal Khan Khattak University Karak</strong>, building a solid technical foundation around <strong>Linux Systems</strong>, <strong>Computer Networking</strong>, and <strong>DevOps Automation</strong>.
+            </p>
+            <p class="story-para">
+              My hands-on learning began with fundamental networking (<strong>CCNA training at Corvit Lahore</strong>) and enterprise Linux system administration (<strong>RHCSA training at Corvit Lahore</strong>). Through these courses and my local test environments, I learned how data flows through subnets and switches, and how enterprise Linux manages storage, processes, and security.
+            </p>
+            <p class="story-para">
+              Today, I am taking that knowledge into modern infrastructure tooling—including <strong>AWS Cloud Computing</strong> and <strong>DevOps engineering</strong> with <strong>Docker</strong>, <strong>Kubernetes</strong>, <strong>Helm</strong>, <strong>Ansible</strong>, and <strong>Nginx</strong>. I am actively seeking an internship opportunity where I can apply my skills to real-world engineering teams.
+            </p>
+          </div>
+
+          <div style="padding-top: 20px; border-top: 1px solid var(--border-light); display: flex; gap: 14px; flex-wrap: wrap;">
+            <span style="font-size: 0.86rem; color: var(--text-muted); font-weight: 600;">Spoken Languages:</span>
+            <span style="font-size: 0.86rem; color: var(--primary); font-weight: 700;">English (Professional)</span>
+            <span style="color: var(--border-light);">&bull;</span>
+            <span style="font-size: 0.86rem; color: var(--accent-violet); font-weight: 700;">Urdu (Native / Bilingual)</span>
+          </div>
+        </div>
+
+        <div class="about-cards-col">
+          <div class="fact-card">
+            <div class="fact-icon" style="background: #eff6ff; color: #2563eb;">🏫</div>
+            <div class="fact-content">
+              <h4>Academic Foundation</h4>
+              <p>Pursuing BS Computer Science (currently in 5th semester) with coursework in Operating Systems, Architecture, and Networks.</p>
+            </div>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon" style="background: #f5f3ff; color: #7c3aed;">🧪</div>
+            <div class="fact-content">
+              <h4>Practical Lab Approach</h4>
+              <p>Everything I learn is implemented locally: provisioning Minikube clusters, writing Dockerfiles, and crafting Ansible playbooks over SSH.</p>
+            </div>
+          </div>
+
+          <div class="fact-card">
+            <div class="fact-icon" style="background: #f0fdf4; color: #16a34a;">🎯</div>
+            <div class="fact-content">
+              <h4>Target Roles</h4>
+              <p>Junior DevOps Intern, Linux System Administration Intern, Cloud Support Intern, and IT Infrastructure Intern.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Technical Skills Section
+       ======================================================================== -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 02. COMPETENCIES</span>
+        <h2 class="section-title">Technical Skills &amp; Stack</h2>
+        <p class="section-desc">Technologies practiced through hands-on laboratory setups, system administration tasks, and training coursework.</p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Card 1: Linux & OS -->
+        <div class="skill-card">
+          <div class="skill-card-top">
+            <div class="skill-icon-box" style="background: #fef3c7; color: #d97706;">🐧</div>
+            <h3>Linux Administration</h3>
+          </div>
+          <p class="skill-card-desc">Enterprise system administration, user privilege controls, systemd units, storage, and web services.</p>
+          <div class="skill-tag-wrap">
+            <span class="skill-tag">RHEL</span>
+            <span class="skill-tag">Ubuntu</span>
+            <span class="skill-tag">CentOS</span>
+            <span class="skill-tag">Reverse Proxy (Nginx)</span>
+            <span class="skill-tag">Nginx</span>
+            <span class="skill-tag">Apache2</span>
+            <span class="skill-tag">DNS Config</span>
+            <span class="skill-tag">Bash Scripting</span>
+            <span class="skill-tag">Systemd</span>
+            <span class="skill-tag">LVM Storage</span>
+            <span class="skill-tag">SSH Hardening</span>
+          </div>
+        </div>
+
+        <!-- Card 2: DevOps & Containers -->
+        <div class="skill-card">
+          <div class="skill-card-top">
+            <div class="skill-icon-box" style="background: #e0f2fe; color: #0284c7;">🐳</div>
+            <h3>DevOps &amp; Containers</h3>
+          </div>
+          <p class="skill-card-desc">Containerization, local cluster management, declarative manifests, package management, and CI/CD tools.</p>
+          <div class="skill-tag-wrap">
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">Minikube</span>
+            <span class="skill-tag">Helm Charts</span>
+            <span class="skill-tag">Deployments &amp; Pods</span>
+            <span class="skill-tag">ClusterIP Services</span>
+            <span class="skill-tag">HostPath Volumes</span>
+            <span class="skill-tag">Jenkins</span>
+            <span class="skill-tag">GitLab</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Cloud Computing -->
+        <div class="skill-card">
+          <div class="skill-card-top">
+            <div class="skill-icon-box" style="background: #ffedd5; color: #ea580c;">☁️</div>
+            <h3>Cloud Infrastructure</h3>
+          </div>
+          <p class="skill-card-desc">Foundational training in AWS core services, compute, storage, security, and networking concepts.</p>
+          <div class="skill-tag-wrap">
+            <span class="skill-tag">AWS EC2</span>
+            <span class="skill-tag">Amazon S3</span>
+            <span class="skill-tag">AWS IAM</span>
+            <span class="skill-tag">VPC Networking</span>
+            <span class="skill-tag">Cloud Security</span>
+            <span class="skill-tag">Cloud Architecture</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Networking & Security -->
+        <div class="skill-card">
+          <div class="skill-card-top">
+            <div class="skill-icon-box" style="background: #ede9fe; color: #7c3aed;">🌐</div>
+            <h3>Networking &amp; Security</h3>
+          </div>
+          <p class="skill-card-desc">Strong grounding in Cisco CCNA curriculum, network topology, routing, switching, and firewalling.</p>
+          <div class="skill-tag-wrap">
+            <span class="skill-tag">Routing &amp; Switching (CCNA)</span>
+            <span class="skill-tag">TCP/IP Suite</span>
+            <span class="skill-tag">OSI Model</span>
+            <span class="skill-tag">IPv4/IPv6 Subnetting</span>
+            <span class="skill-tag">VLANs</span>
+            <span class="skill-tag">DNS &amp; DHCP</span>
+            <span class="skill-tag">NAT</span>
+            <span class="skill-tag">Firewalls (iptables, UFW)</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Automation & Scripting -->
+        <div class="skill-card">
+          <div class="skill-card-top">
+            <div class="skill-icon-box" style="background: #f0fdf4; color: #16a34a;">⚡</div>
+            <h3>Automation &amp; Scripting</h3>
+          </div>
+          <p class="skill-card-desc">Automating repetitive administrative workflows, configuration management, and server setups.</p>
+          <div class="skill-tag-wrap">
+            <span class="skill-tag">Ansible Automation</span>
+            <span class="skill-tag">Playbooks &amp; Inventory</span>
+            <span class="skill-tag">Bash Automation</span>
+            <span class="skill-tag">Idempotent Setup</span>
+            <span class="skill-tag">Cron Scheduling</span>
+            <span class="skill-tag">SSH Automation</span>
+          </div>
+        </div>
+
+        <!-- Card 6: Virtualization & Tools -->
+        <div class="skill-card">
+          <div class="skill-card-top">
+            <div class="skill-icon-box" style="background: #f1f5f9; color: #475569;">🛠️</div>
+            <h3>Virtualization &amp; Tools</h3>
+          </div>
+          <p class="skill-card-desc">Developer tooling, hypervisors, terminal utilities, and structured configuration files.</p>
+          <div class="skill-tag-wrap">
+            <span class="skill-tag">VirtualBox</span>
+            <span class="skill-tag">KVM Hypervisor</span>
+            <span class="skill-tag">Vim Editor</span>
+            <span class="skill-tag">Linux CLI</span>
+            <span class="skill-tag">YAML Syntax</span>
+            <span class="skill-tag">Git Version Control</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Projects Section (Most Important)
+       ======================================================================== -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 03. LAB IMPLEMENTATIONS</span>
+        <h2 class="section-title">Hands-On Technical Projects</h2>
+        <p class="section-desc">Practical infrastructure and orchestration architectures built and validated in local lab environments.</p>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-illustration">
+            <div class="diag-container">
+              <!-- Clean SVG Technical Illustration for Kubernetes Cluster -->
+              <svg width="260" height="130" viewBox="0 0 260 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="240" height="110" rx="12" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="2"/>
+                <text x="25" y="32" fill="#2563EB" font-family="'Fira Code', monospace" font-size="11" font-weight="bold">cluster: minikube-local</text>
+                
+                <!-- Pod 1 -->
+                <rect x="25" y="44" width="95" height="60" rx="8" fill="#EFF6FF" stroke="#93C5FD"/>
+                <text x="35" y="62" fill="#1E40AF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="bold">Deployment</text>
+                <text x="35" y="78" fill="#64748B" font-family="'Fira Code', monospace" font-size="8.5">app: web-tier</text>
+                <circle cx="104" cy="59" r="4" fill="#10B981"/>
+
+                <!-- Service / PV -->
+                <rect x="140" y="44" width="95" height="60" rx="8" fill="#F5F3FF" stroke="#C4B5FD"/>
+                <text x="150" y="62" fill="#6D28D9" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="bold">HostPath PV</text>
+                <text x="150" y="78" fill="#64748B" font-family="'Fira Code', monospace" font-size="8.5">vol: persistent</text>
+                <circle cx="219" cy="59" r="4" fill="#3B82F6"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-badge-row">
+              <span class="project-lab-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.2 18.5A2 2 0 0 0 6 21.5h12a2 2 0 0 0 1.8-3L14 9.31V2"/></svg>
+                <span>Lab Project</span>
+              </span>
+              <span class="project-tech-mono">Kubernetes &bull; Docker</span>
+            </div>
+
+            <h3 class="project-title">Kubernetes &amp; Docker Microservices Deployment</h3>
+            <p class="project-desc">
+              Containerized multi-tier microservice architecture deployed on a local Minikube cluster using Docker runtime.
+            </p>
+
+            <ul class="project-bullets">
+              <li>Constructed multi-stage <strong>Dockerfiles</strong> to package application components into lightweight, isolated container runtime environments.</li>
+              <li>Authored declarative YAML manifests configuring <strong>Deployments</strong>, <strong>ClusterIP Services</strong>, and persistent <strong>HostPath Volumes</strong> for state retention.</li>
+              <li>Packaged and deployed application releases using <strong>Helm</strong> charts and inspected pod lifecycles, service routing, and container logs with <code>kubectl</code>.</li>
+            </ul>
+
+            <div class="project-tags-footer">
+              <span class="tech-pill">Kubernetes</span>
+              <span class="tech-pill">Minikube</span>
+              <span class="tech-pill">Docker</span>
+              <span class="tech-pill">Helm</span>
+              <span class="tech-pill">YAML</span>
+              <span class="tech-pill">kubectl</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-illustration">
+            <div class="diag-container">
+              <!-- Clean SVG Technical Illustration for Ansible Automation -->
+              <svg width="260" height="130" viewBox="0 0 260 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="240" height="110" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+                <text x="25" y="32" fill="#7C3AED" font-family="'Fira Code', monospace" font-size="11" font-weight="bold">ansible-playbook -i hosts</text>
+
+                <!-- Controller -->
+                <rect x="25" y="46" width="70" height="56" rx="8" fill="#F5F3FF" stroke="#C4B5FD"/>
+                <text x="35" y="68" fill="#6D28D9" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="bold">Control</text>
+                <text x="35" y="84" fill="#64748B" font-family="'Fira Code', monospace" font-size="8.5">Node</text>
+
+                <!-- Arrow -->
+                <line x1="102" y1="74" x2="148" y2="74" stroke="#7C3AED" stroke-width="2" stroke-dasharray="4 3"/>
+                <polygon points="148,70 156,74 148,78" fill="#7C3AED"/>
+
+                <!-- Managed Node -->
+                <rect x="160" y="46" width="75" height="56" rx="8" fill="#EFF6FF" stroke="#93C5FD"/>
+                <text x="170" y="68" fill="#1E40AF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="bold">Target</text>
+                <text x="170" y="84" fill="#64748B" font-family="'Fira Code', monospace" font-size="8.5">RHEL Host</text>
+              </svg>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-badge-row">
+              <span class="project-lab-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.2 18.5A2 2 0 0 0 6 21.5h12a2 2 0 0 0 1.8-3L14 9.31V2"/></svg>
+                <span>Lab Project</span>
+              </span>
+              <span class="project-tech-mono">Ansible &bull; SSH</span>
+            </div>
+
+            <h3 class="project-title">Infrastructure Automation with Ansible</h3>
+            <p class="project-desc">
+              Automated server provisioning, package installation, and baseline configuration across target Linux environments.
+            </p>
+
+            <ul class="project-bullets">
+              <li>Developed modular <strong>Ansible playbooks</strong> and inventory configurations to automate package installations, service management, and user setups across local Linux nodes.</li>
+              <li>Implemented repeatable, <strong>idempotent playbooks</strong> executing over secure SSH to maintain baseline configurations and eliminate manual configuration drift.</li>
+              <li>Tested playbook idempotency and state validation against RHEL and Ubuntu target environments.</li>
+            </ul>
+
+            <div class="project-tags-footer">
+              <span class="tech-pill">Ansible</span>
+              <span class="tech-pill">RHEL</span>
+              <span class="tech-pill">Ubuntu</span>
+              <span class="tech-pill">SSH</span>
+              <span class="tech-pill">YAML</span>
+              <span class="tech-pill">Automation</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="project-illustration">
+            <div class="diag-container">
+              <!-- Clean SVG Illustration for Reverse Proxy -->
+              <svg width="260" height="130" viewBox="0 0 260 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="240" height="110" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+                <text x="25" y="32" fill="#059669" font-family="'Fira Code', monospace" font-size="11" font-weight="bold">nginx: reverse-proxy :80</text>
+
+                <!-- Client -->
+                <rect x="25" y="46" width="55" height="56" rx="8" fill="#F0FDF4" stroke="#86EFAC"/>
+                <text x="33" y="78" fill="#166534" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="bold">Traffic</text>
+
+                <!-- Proxy -->
+                <rect x="95" y="46" width="60" height="56" rx="8" fill="#EFF6FF" stroke="#93C5FD"/>
+                <text x="104" y="72" fill="#1E40AF" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="bold">Nginx</text>
+                <text x="104" y="86" fill="#64748B" font-family="'Fira Code', monospace" font-size="8">Proxy</text>
+
+                <!-- Backend -->
+                <rect x="170" y="46" width="65" height="56" rx="8" fill="#FEF3C7" stroke="#FDE68A"/>
+                <text x="176" y="72" fill="#92400E" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="bold">Apache2</text>
+                <text x="176" y="86" fill="#64748B" font-family="'Fira Code', monospace" font-size="8">Backend</text>
+
+                <line x1="82" y1="74" x2="93" y2="74" stroke="#059669" stroke-width="2"/>
+                <line x1="156" y1="74" x2="168" y2="74" stroke="#2563EB" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-badge-row">
+              <span class="project-lab-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.2 18.5A2 2 0 0 0 6 21.5h12a2 2 0 0 0 1.8-3L14 9.31V2"/></svg>
+                <span>Lab Project</span>
+              </span>
+              <span class="project-tech-mono">Nginx &bull; Apache &bull; DNS</span>
+            </div>
+
+            <h3 class="project-title">Reverse Proxy, Web Server &amp; DNS Setup</h3>
+            <p class="project-desc">
+              High-efficiency web hosting routing architecture configured with Nginx reverse proxying, Apache2 backends, and local DNS.
+            </p>
+
+            <ul class="project-bullets">
+              <li>Configured <strong>Nginx as a Reverse Proxy</strong> to route incoming web requests to upstream Apache2 instances based on path and hostname.</li>
+              <li>Administered <strong>Apache2</strong> virtual host directives, port bindings, and directory permission policies on Linux.</li>
+              <li>Configured internal <strong>DNS resolution</strong> and local domain mappings to enable clean name-based routing between lab services.</li>
+            </ul>
+
+            <div class="project-tags-footer">
+              <span class="tech-pill">Nginx</span>
+              <span class="tech-pill">Reverse Proxy</span>
+              <span class="tech-pill">Apache2</span>
+              <span class="tech-pill">DNS Mapping</span>
+              <span class="tech-pill">Linux</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <div class="project-illustration">
+            <div class="diag-container">
+              <!-- Clean SVG Illustration for Linux Server Hardening -->
+              <svg width="260" height="130" viewBox="0 0 260 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="10" width="240" height="110" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+                <text x="25" y="32" fill="#D97706" font-family="'Fira Code', monospace" font-size="11" font-weight="bold">rhel: secure-baseline</text>
+
+                <!-- Storage / LVM -->
+                <rect x="25" y="46" width="95" height="56" rx="8" fill="#FEF3C7" stroke="#FDE68A"/>
+                <text x="35" y="68" fill="#92400E" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="bold">LVM Storage</text>
+                <text x="35" y="84" fill="#64748B" font-family="'Fira Code', monospace" font-size="8.5">pv &gt; vg &gt; lv_data</text>
+
+                <!-- Security / Firewall -->
+                <rect x="135" y="46" width="100" height="56" rx="8" fill="#EFF6FF" stroke="#93C5FD"/>
+                <text x="145" y="68" fill="#1E40AF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="bold">SSH &amp; UFW</text>
+                <text x="145" y="84" fill="#64748B" font-family="'Fira Code', monospace" font-size="8.5">key-auth only</text>
+              </svg>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-badge-row">
+              <span class="project-lab-badge">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.31L4.2 18.5A2 2 0 0 0 6 21.5h12a2 2 0 0 0 1.8-3L14 9.31V2"/></svg>
+                <span>Lab Project</span>
+              </span>
+              <span class="project-tech-mono">RHEL &bull; LVM &bull; Security</span>
+            </div>
+
+            <h3 class="project-title">Enterprise Linux Administration &amp; Hardening</h3>
+            <p class="project-desc">
+              Linux operating environment hardened according to Red Hat Certified System Administrator (RHCSA) benchmarks.
+            </p>
+
+            <ul class="project-bullets">
+              <li>Configured Linux virtual environments according to RHCSA benchmarks: managed <strong>LVM storage partitions</strong>, users, groups, and systemd units.</li>
+              <li>Hardened local server access by <strong>disabling root password authentication</strong> over SSH, enforcing public-key authorization, and defining firewall rules.</li>
+              <li>Created automated Bash maintenance scripts for log rotation, disk space alerts, and process monitoring.</li>
+            </ul>
+
+            <div class="project-tags-footer">
+              <span class="tech-pill">RHEL</span>
+              <span class="tech-pill">Bash</span>
+              <span class="tech-pill">Systemd</span>
+              <span class="tech-pill">LVM</span>
+              <span class="tech-pill">Firewall</span>
+              <span class="tech-pill">SSH Keys</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Learning & Training Section
+       ======================================================================== -->
+  <section id="learning" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// 04. EDUCATION &amp; TRAINING</span>
+        <h2 class="section-title">Certifications, Training &amp; Academics</h2>
+        <p class="section-desc">Distinguishing formal professional training tracks from university academic coursework.</p>
+      </div>
+
+      <div class="learning-grid">
+        <!-- Professional Training Block -->
+        <div class="card-block">
+          <div class="block-header">
+            <div class="block-header-icon" style="background: #eff6ff; color: #2563eb;">📜</div>
+            <h3>Professional Training Tracks</h3>
+          </div>
+
+          <div class="train-item">
+            <div class="train-info">
+              <h4>Red Hat Certified System Administrator (RHCSA) Training &amp; Prep</h4>
+              <p>Corvit Systems, Lahore</p>
+              <span>Enterprise Linux CLI, storage partitions, LVM, user security, and systemd management.</span>
+            </div>
+            <span class="status-badge-train badge-done">2025 Completed</span>
+          </div>
+
+          <div class="train-item">
+            <div class="train-info">
+              <h4>Cisco Certified Network Associate (CCNA) Training &amp; Prep</h4>
+              <p>Corvit Systems, Lahore</p>
+              <span>Network architecture, IP connectivity, routing &amp; switching, subnetting, and VLANs.</span>
+            </div>
+            <span class="status-badge-train badge-done">2025 Completed</span>
+          </div>
+
+          <div class="train-item">
+            <div class="train-info">
+              <h4>AWS Cloud Computing Training &amp; Prep</h4>
+              <p>Cyberwing, Lahore</p>
+              <span>Core AWS cloud infrastructure, EC2 virtual servers, S3 storage, IAM access control, and VPC.</span>
+            </div>
+            <span class="status-badge-train badge-done">2026 Completed</span>
+          </div>
+
+          <div class="train-item">
+            <div class="train-info">
+              <h4>DevOps Engineering Specialization Training</h4>
+              <p>Cyberwing, Lahore</p>
+              <span>Hands-on track covering Docker, Kubernetes, Ansible automation, Jenkins, and CI/CD pipelines.</span>
+            </div>
+            <span class="status-badge-train badge-progress">In Progress</span>
+          </div>
+        </div>
+
+        <!-- Academic Background Block -->
+        <div class="card-block">
+          <div class="block-header">
+            <div class="block-header-icon" style="background: #f5f3ff; color: #7c3aed;">🎓</div>
+            <h3>Academic Background</h3>
+          </div>
+
+          <div class="timeline-wrap">
+            <div class="timeline-entry">
+              <span class="timeline-entry-dot"></span>
+              <h4>Bachelor of Science in Computer Science (BSCS)</h4>
+              <p>Khushal Khan Khattak University Karak (KKKUK), KPK</p>
+              <span>Currently in 5th Semester &bull; In Progress</span>
+            </div>
+
+            <div class="timeline-entry">
+              <span class="timeline-entry-dot"></span>
+              <h4>Higher Secondary School Certificate (FSc)</h4>
+              <p>Pre-Engineering / Computer Science</p>
+              <span>Board of Intermediate and Secondary Education &bull; 2024</span>
+            </div>
+
+            <div class="timeline-entry">
+              <span class="timeline-entry-dot"></span>
+              <h4>Secondary School Certificate (Matriculation)</h4>
+              <p>Science Group</p>
+              <span>Board of Intermediate and Secondary Education &bull; 2022</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Contact Section
+       ======================================================================== -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-card-main">
+        <h2 class="contact-heading">Let's Connect &amp; Collaborate</h2>
+        <p class="contact-intro">
+          I am actively seeking internship opportunities in <strong>Linux Administration</strong>, <strong>DevOps Engineering</strong>, <strong>Cloud Support</strong>, and <strong>IT Infrastructure</strong>. Let's discuss how my hands-on skills can add value to your team.
+        </p>
+
+        <div class="contact-chips-row">
+          <a href="mailto:furqanalishah2256@gmail.com" class="contact-chip-item">
+            <span class="contact-chip-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </span>
+            <span>furqanalishah2256@gmail.com</span>
+          </a>
+
+          <a href="tel:+923216153230" class="contact-chip-item">
+            <span class="contact-chip-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </span>
+            <span>+92 321 6153230</span>
+          </a>
+
+          <a href="https://linkedin.com/in/syed-furqan-0073b5334" target="_blank" rel="noopener noreferrer" class="contact-chip-item">
+            <span class="contact-chip-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </span>
+            <span>LinkedIn Profile</span>
+          </a>
+
+          <span class="contact-chip-item" style="cursor: default;">
+            <span class="contact-chip-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </span>
+            <span>Karak, KPK, Pakistan</span>
+          </span>
+        </div>
+
+        <div class="download-banner">
+          <div class="download-banner-text">
+            <h4>Ready to review my full qualifications?</h4>
+            <p>Download my official ATS-optimized resume in PDF format.</p>
+          </div>
+          <a href="Syed_Furqan_Ahmed_CV.pdf" download="Syed_Furqan_Ahmed_CV.pdf" class="btn btn-primary" style="white-space: nowrap;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download CV (PDF)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       Footer
+       ======================================================================== -->
+  <footer>
+    <div class="container footer-inner">
+      <p>&copy; 2026 <strong>Syed Furqan Ahmed</strong> &bull; Computer Science Student &bull; Linux &amp; DevOps Intern</p>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#learning">Learning</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       Interactive Scripts (Typewriter, ScrollSpy, Mobile Menu)
+       ======================================================================== -->
+  <script>
+    // 1. Typewriter Animation for Accurate Interests
+    const words = [
+      "Linux Administration",
+      "DevOps Engineering",
+      "Cloud Infrastructure",
+      "Networking & CCNA"
+    ];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typeSpeed = 100;
+    const eraseSpeed = 50;
+    const delayBetweenWords = 1800;
+    const typewriterElement = document.getElementById("typewriterText");
+
+    function typeEffect() {
+      const currentWord = words[wordIndex];
+      if (isDeleting) {
+        typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, delayBetweenWords);
+        return;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+
+      const speed = isDeleting ? eraseSpeed : typeSpeed;
+      setTimeout(typeEffect, speed);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(typeEffect, 400);
+    });
+
+    // 2. Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    mobileMenuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Close mobile menu on clicking any navigation link
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    // 3. ScrollSpy & Active Link Indicator
+    const sections = document.querySelectorAll("header, section");
+    const navAnchorLinks = document.querySelectorAll(".nav-links a");
+
+    window.addEventListener("scroll", () => {
+      let currentSectionId = "";
+      const scrollPos = window.pageYOffset + 120;
+
+      sections.forEach(sec => {
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentSectionId = sec.getAttribute("id");
+        }
+      });
+
+      navAnchorLinks.forEach(a => {
+        a.classList.remove("active");
+        if (a.getAttribute("href") === `#${currentSectionId}`) {
+          a.classList.add("active");
+        }
+      });
+    });
+
+    // 4. Dark & Day (Light) Theme Toggle Controller
+    const themeToggleBtn = document.getElementById("themeToggle");
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      try {
+        localStorage.setItem("furqan_portfolio_theme", theme);
+      } catch (err) {
+        console.warn("Storage warning:", err);
+      }
+      if (themeToggleBtn) {
+        const isDark = theme === "dark";
+        const label = isDark ? "Switch to Day Theme" : "Switch to Dark Theme";
+        themeToggleBtn.setAttribute("title", label);
+        themeToggleBtn.setAttribute("aria-label", label);
+      }
+    }
+
+    if (themeToggleBtn) {
+      // Initialize tooltip & accessibility state according to current theme
+      const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+      setTheme(currentTheme);
+
+      themeToggleBtn.addEventListener("click", () => {
+        const activeTheme = document.documentElement.getAttribute("data-theme") || "light";
+        const nextTheme = activeTheme === "dark" ? "light" : "dark";
+        setTheme(nextTheme);
+      });
+    }
+
+    // Dynamic listener for OS theme preference changes (if user hasn't chosen manually)
+    if (window.matchMedia) {
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+        try {
+          if (!localStorage.getItem("furqan_portfolio_theme")) {
+            setTheme(e.matches ? "dark" : "light");
+          }
+        } catch (err) {}
+      });
+    }
+  </script>
+</body>
+</html>
